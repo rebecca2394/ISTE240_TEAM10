@@ -1,4 +1,4 @@
-package org.example.iste_240_assignment;
+package org.example.iste_240_assignment.model;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ public class Player {
     private int playerId;
     private String username;
     private String email;
-    private String passwordHash;
+    private String password;
 
     @PostConstruct
     public void init() {
@@ -41,12 +41,12 @@ public class Player {
         this.email = email;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
