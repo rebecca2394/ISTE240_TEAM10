@@ -6,4 +6,5 @@ We designed a web based educational learning platform for primary and middle sch
 ## Team Members:
 Minha Fathima - 400005568
 Rebecca Mathew - 396007418
-Aaron felick D'souza - 415002981
+Aaron felick D'souza - 41500298
+Mohammed al salaam - 418002685
