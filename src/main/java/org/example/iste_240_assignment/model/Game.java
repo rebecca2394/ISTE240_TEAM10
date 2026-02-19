@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Game {
 
-    private int id;
+    private int gameId;
     private String name;
     private String subject;
     private String topic;
@@ -29,11 +29,11 @@ public class Game {
     }
 
     public int getId() {
-        return id;
+        return gameId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int gameId) {
+        this.gameId = gameId;
     }
 
     public String getName() {
