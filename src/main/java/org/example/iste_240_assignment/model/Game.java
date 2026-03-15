@@ -15,6 +15,19 @@ public class Game {
     public Game(){
     }
 
+    public Game(int gameId, String name, String subject, String topic,
+                int difficulty, int levels, int rounds, int maxFails, boolean available) {
+        this.gameId = gameId;
+        this.name = name;
+        this.subject = subject;
+        this.topic = topic;
+        this.difficulty = difficulty;
+        this.levels = levels;
+        this.rounds = rounds;
+        this.maxFails = maxFails;
+        this.available = available;
+    }
+
     public int getId() {
         return gameId;
     }
