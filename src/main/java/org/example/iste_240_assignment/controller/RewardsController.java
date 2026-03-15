@@ -41,6 +41,6 @@ public class RewardsController {
     @GetMapping("/add/success/{entityName}")
     public String successPage(@PathVariable String entityName, Model model) {
         model.addAttribute("entityName", entityName);
-        return "Success";
+        return "success";
     }
 }

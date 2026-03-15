@@ -27,7 +27,7 @@ public class ScoreController {
         model.addAttribute("players", gameService.getPlayers());
         model.addAttribute("games", gameService.getGames());
 
-        return "add-score";
+        return "add-Score";
     }
 
     @PostMapping("/score/add")
