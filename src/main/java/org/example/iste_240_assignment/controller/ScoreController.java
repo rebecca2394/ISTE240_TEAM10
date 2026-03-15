@@ -57,10 +57,4 @@ public class ScoreController {
 
         return "redirect:/add/success/score";
     }
-
-    @GetMapping("/add/success/{entityName}")
-    public String successPage(@PathVariable String entityName, Model model) {
-        model.addAttribute("entityName", entityName);
-        return "success";
-    }
 }

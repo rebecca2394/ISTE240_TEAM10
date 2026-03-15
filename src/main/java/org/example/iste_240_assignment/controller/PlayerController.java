@@ -36,10 +36,4 @@ public class PlayerController {
         model.addAttribute("entityName", "player");
         return "success";
     }
-
-    @GetMapping("add/success/{entityName}")
-    public String successPage(@PathVariable String entityName, Model model) {
-        model.addAttribute("entityName", entityName);
-        return "success";
-    }
 }

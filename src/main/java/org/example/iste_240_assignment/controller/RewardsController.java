@@ -38,9 +38,4 @@ public class RewardsController {
         return "redirect:/add/success/rewards";
     }
 
-    @GetMapping("/add/success/{entityName}")
-    public String successPage(@PathVariable String entityName, Model model) {
-        model.addAttribute("entityName", entityName);
-        return "success";
-    }
 }
