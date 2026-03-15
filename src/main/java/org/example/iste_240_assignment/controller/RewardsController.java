@@ -18,12 +18,12 @@ public class RewardsController {
     @GetMapping("/rewards")
     public String viewRewards(Model model) {
         model.addAttribute("rewards", gameService.getRewards());
-        return "rewards";
+        return "Rewards";
     }
 
     @GetMapping("/rewards/add")
     public String addRewardsForm() {
-        return "add-rewards";
+        return "add-Rewards";
     }
 
     @PostMapping("/rewards/add")
@@ -41,6 +41,6 @@ public class RewardsController {
     @GetMapping("/add/success/{entityName}")
     public String successPage(@PathVariable String entityName, Model model) {
         model.addAttribute("entityName", entityName);
-        return "success";
+        return "Success";
     }
 }
