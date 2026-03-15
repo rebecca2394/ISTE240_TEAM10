@@ -18,60 +18,22 @@ public class GameService {
 
     public GameService() {
 
-        Game game1 = new Game();
-        game1.setId(1);
-        game1.setName("Memory Card");
-        game1.setSubject("Science");
-        game1.setTopic("Solar System");
-        game1.setDifficulty(1);
-        game1.setLevels(5);
-        game1.setRounds(3);
-        game1.setMaxFails(3);
-        game1.setAvailable(true);
+        Game game1 = new Game(1,"Memory Card","Science","Solar System",1,5,3,3,true);
+        Game game2 = new Game(2,"Tic Tac Toe","Math","Numbers",2,4,3,3,true);
 
-        Game game2 = new Game();
-        game2.setId(2);
-        game2.setName("Tic Tac Toe");
-        game2.setSubject("Math");
-        game2.setTopic("Numbers");
-        game2.setDifficulty(2);
-        game2.setLevels(4);
-        game2.setRounds(3);
-        game2.setMaxFails(3);
-        game2.setAvailable(true);
         games.add(game1);
         games.add(game2);
 
-        Player p1 = new Player();
-        p1.setPlayerId(1);
-        p1.setUsername("player1");
-        p1.setEmail("player1@email.com");
-        p1.setPassword("1234");
+        Player p1 = new Player(1,"player1","player1@email.com","1234");
+        Player p2 = new Player(2,"player2","player2@email.com","1234");
 
-        Player p2 = new Player();
-        p2.setPlayerId(2);
-        p2.setUsername("player2");
-        p2.setEmail("player2@email.com");
-        p2.setPassword("1234");
         players.add(p1);
         players.add(p2);
 
-        Score s1 = new Score();
-        s1.setPlayerId(1);
-        s1.setGameId(1);
-        s1.setCurrentLevel(1);
-        s1.setRoundsPlayed(0);
-        s1.setAttempts(0);
-        s1.setPoints(10);
-        s1.setGameOver(false);
+        Score s1 = new Score(p1, game1, 1, 0, 0, 10, false);
         scores.add(s1);
 
-        Rewards r1 = new Rewards();
-        r1.setPlayerId(1);
-        r1.setGameId(1);
-        r1.setBadges(1);
-        r1.setBonus(10);
-        r1.setMaxDifficulty(5);
+        Rewards r1 = new Rewards(1,1,1,10,5);
         rewards.add(r1);
 
     }
