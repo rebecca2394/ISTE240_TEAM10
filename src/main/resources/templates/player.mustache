@@ -5,28 +5,26 @@
     <title>Players</title>
 </head>
 <body>
-    <h1>Players</h1>
+<h1>Players</h1>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Player's ID</th>
-                <th>User's Name</th>
-                <th>Email id</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#players}}
-            <tr>
-                <td>{{playerId}}</td>
-                <td>{{username}}</td>
-                <td>{{email}}</td>
-            </tr>
-            {{/players}}
-        </tbody>
-    </table>
-
-
+<table border="1">
+    <thead>
+    <tr>
+        <th>Player's ID</th>
+        <th>User's Name</th>
+        <th>Email id</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#players}}
+        <tr>
+            <td>{{playerId}}</td>
+            <td>{{username}}</td>
+            <td>{{email}}</td>
+        </tr>
+    {{/players}}
+    </tbody>
+</table>
     <a href="/player/add">add a player</a>
 </body>
 </html>
