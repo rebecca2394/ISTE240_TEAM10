@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rewards</title>
+</head>
+<body>
+<h1>Rewards List</h1>
+<table border="1">
+    <tr>
+        <th>Game ID</th>
+        <th>Player ID</th>
+        <th>Badges</th>
+        <th>Bonus</th>
+    </tr>
+    {{#rewards}}
+        <tr>
+            <td>{{gameId}}</td>
+            <td>{{playerId}}</td>
+            <td>{{badges}}</td>
+            <td>{{bonus}}</td>
+        </tr>
+    {{/rewards}}
+</table>
+<a href="/AddReward">Add Reward</a>
+</body>
+</html>

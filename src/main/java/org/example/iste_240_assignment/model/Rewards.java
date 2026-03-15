@@ -11,6 +11,13 @@ public class Rewards {
 
     public Rewards(){
     }
+    public Rewards(int playerId, int gameId, int badges, int bonus, int maxDifficulty) {
+        this.playerId = playerId;
+        this.gameId = gameId;
+        this.badges = badges;
+        this.bonus = bonus;
+        this.maxDifficulty = maxDifficulty;
+    }
 
     public int getGameId() {
         return gameId;
