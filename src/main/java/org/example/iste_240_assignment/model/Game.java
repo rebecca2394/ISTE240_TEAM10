@@ -1,9 +1,5 @@
 package org.example.iste_240_assignment.model;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Component;
-
-@Component
 public class Game {
 
     private int gameId;
@@ -16,16 +12,7 @@ public class Game {
     private int maxFails;
     private boolean available;
 
-    @PostConstruct
-    public void init() {
-        this.name = "Memory Card";
-        this.subject = "Science";
-        this.topic = "Solar System";
-        this.difficulty = 1;
-        this.levels = 5;
-        this.rounds = 3;
-        this.maxFails = 3;
-        this.available = true;
+    public Game(){
     }
 
     public int getId() {

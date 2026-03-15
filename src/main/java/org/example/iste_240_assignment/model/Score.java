@@ -1,9 +1,5 @@
 package org.example.iste_240_assignment.model;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Component;
-
-@Component
 public class Score {
 
     private int playerId;
@@ -14,13 +10,7 @@ public class Score {
     private int points;
     private boolean gameOver;
 
-    @PostConstruct
-    public void init() {
-        this.currentLevel = 1;
-        this.roundsPlayed = 0;
-        this.attempts = 0;
-        this.points = 0;
-        this.gameOver = false;
+    public Score() {
     }
 
     public int getPlayerId() {

@@ -1,9 +1,5 @@
 package org.example.iste_240_assignment.model;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Component;
-
-@Component
 public class Rewards {
 
     private int gameId;
@@ -13,12 +9,7 @@ public class Rewards {
     private int maxDifficulty;
     private boolean badgeAwarded;
 
-    @PostConstruct
-    public void init() {
-        this.badges = 0;
-        this.bonus = 0;
-        this.maxDifficulty = 5;
-        this.badgeAwarded = false;
+    public Rewards(){
     }
 
     public int getGameId() {
@@ -69,4 +60,5 @@ public class Rewards {
         return "Rewards: Badges=" + badges +
                 ", Bonus=" + bonus;
     }
+
 }

@@ -1,9 +1,5 @@
 package org.example.iste_240_assignment.model;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Component;
-
-@Component
 public class Player {
 
     private int playerId;
@@ -11,10 +7,7 @@ public class Player {
     private String email;
     private String password;
 
-    @PostConstruct
-    public void init() {
-        this.username = "player";
-        this.email = "player@example.com";
+    public Player() {
     }
 
     public int getPlayerId() {
