@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Players</title>
+</head>
+<body>
+    <h1>Players</h1>
+
+    <table border="2" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Player's ID</th>
+                <th>User's Name</th>
+                <th>Email id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#players}}
+            <tr>
+                <td>{{playerId}}</td>
+                <td>{{username}}</td>
+                <td>{{email}}</td>
+            </tr>
+            {{#players}}
+        </tbody>
+    </table>
+
+
+    <a href="/">back to home</a>
+</body>
+</html>

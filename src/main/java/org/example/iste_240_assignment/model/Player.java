@@ -7,8 +7,14 @@ public class Player {
     private String email;
     private String password;
 
-    public Player() {
+    public Player(int playerId, String username, String email, String password) {
+        this.playerId = playerId;
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
+
+    public Player() {}
 
     public int getPlayerId() {
         return playerId;
