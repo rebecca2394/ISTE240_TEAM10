@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <title>Scores</title>
+</head>
+<body>
+
+<h2>Scores List</h2>
+
+<table border="1">
+
+    <tr>
+        <th>Player</th>
+        <th>Game</th>
+        <th>Level</th>
+        <th>Points</th>
+        <th>Attempts</th>
+    </tr>
+
+    {{#scores}}
+
+    <tr>
+        <td>{{player.username}}</td>
+        <td>{{game.name}}</td>
+        <td>{{currentLevel}}</td>
+        <td>{{points}}</td>
+        <td>{{attempts}}</td>
+    </tr>
+
+    {{/scores}}
+
+</table>
+
+<br>
+
+<a href="/score/add">Add New Score</a>
+
+</body>
+</html>

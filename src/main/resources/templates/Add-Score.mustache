@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <title>Add Score</title>
+</head>
+<body>
+
+<h2>Add New Score</h2>
+
+<form action="/score/add" method="post">
+
+
+    <label>
+    Player:
+    <select name="playerId">
+        {{#players}}
+        <option value="{{playerId}}">{{username}}</option>
+        {{/players}}
+    </select>
+    </label>
+
+    <label>
+    Game:
+    <select name="gameId">
+        {{#games}}
+        <option value="{{gameId}}">{{name}}</option>
+        {{/games}}
+    </select>
+    </label>
+
+    <label>
+    Current Level:
+    <input type="number" name="currentLevel">
+    </label>
+
+
+    <label>
+    Rounds Played:
+    <input type="number" name="roundsPlayed">
+    </label>
+
+
+    <label>
+    Attempts:
+    <input type="number" name="attempts">
+    </label>
+
+
+    <label>
+    Points:
+    <input type="number" name="points">
+    </label>
+
+
+    <label>
+    Game Over:
+    <input type="checkbox" name="gameOver" value="true">
+    </label>
+
+
+    <button type="submit">Add Score</button>
+
+</form>
+
+</body>
+</html>
