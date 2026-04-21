@@ -9,31 +9,4 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PlayerController {
 
-    private final GameService gameService;
-
-    public PlayerController(GameService gameService) {
-        this.gameService = gameService;
-    }
-
-    @GetMapping("/player")
-    public String viewPlayers(Model model) {
-        model.addAttribute("players", gameService.getPlayers());
-        return "player";
-    }
-
-    @GetMapping("/player/add")
-    public String addPlayerFoam() {
-        return "add-player";
-    }
-
-    @PostMapping("/player/add")
-    public String addPlayer(@RequestParam int playerId,
-                            @RequestParam String username,
-                            @RequestParam String email,
-                            @RequestParam String password,
-                            Model model) {
-        gameService.addPlayer(new Player(playerId, username, email, password));
-        model.addAttribute("entityName", "player");
-        return "success";
-    }
 }
