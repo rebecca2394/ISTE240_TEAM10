@@ -27,5 +27,8 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
     @Query("UPDATE Player p SET p.password = :newPassword WHERE p.playerId = :id")
     int updatePlayerPassword(@Param("id") int id, @Param("newPassword") String newPassword);
 
+    List<Player> findByUsernameContainingIgnoreCase(String username);
+    List<Player> findByEmailContainingIgnoreCase(String email);
+
     List<Player> findByEmailEndingWith(String domain);
 }

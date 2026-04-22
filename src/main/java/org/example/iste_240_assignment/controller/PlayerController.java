@@ -35,6 +35,18 @@ public class PlayerController {
         return playerService.getPlayerByEmail(email);
     }
 
+    @GetMapping("/search")
+    public List<Player> searchPlayers(@RequestParam(required = false) String username,
+                                      @RequestParam(required = false) String email) {
+        if (username != null && !username.isEmpty()) {
+            return playerService.searchByUsername(username);
+        } else if (email != null && !email.isEmpty()) {
+            return playerService.searchByEmail(email);
+        } else {
+            return playerService.getAllPlayers();
+        }
+    }
+
     @PostMapping
     public Player addPlayer(@RequestBody Player player) {
         return playerService.savePlayer(player);

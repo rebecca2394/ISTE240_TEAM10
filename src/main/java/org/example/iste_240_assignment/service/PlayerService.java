@@ -46,6 +46,14 @@ public class PlayerService {
         return playerRepository.findByEmail(email);
     }
 
+    public List<Player> searchByUsername(String username) {
+        return playerRepository.findByUsernameContainingIgnoreCase(username);
+    }
+
+    public List<Player> searchByEmail(String email) {
+        return playerRepository.findByEmailContainingIgnoreCase(email);
+    }
+
     public Player updatePlayer(Player playerToUpdate) {
         Optional<Player> existingPlayer = playerRepository.findById(playerToUpdate.getId());
         if (existingPlayer.isEmpty()) {
