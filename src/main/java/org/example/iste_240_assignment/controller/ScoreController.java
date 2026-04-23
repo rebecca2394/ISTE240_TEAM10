@@ -13,27 +13,27 @@ public class ScoreController {
     @Autowired
     private ScoreService scoreService;
 
-    @GetMapping // Get all records [cite: 135]
+    @GetMapping
     public List<Score> getAll() {
         return scoreService.getAllScores();
     }
 
-    @GetMapping("/{id}") // Get one by ID [cite: 135]
+    @GetMapping("/{id}")
     public Score getOne(@PathVariable int id) {
         return scoreService.getScoreById(id).orElse(null);
     }
 
-    @PostMapping // Create new record [cite: 135]
+    @PostMapping
     public Score create(@RequestBody Score score) {
         return scoreService.saveScore(score);
     }
 
-    @PutMapping("/{id}") // Update points [cite: 135]
+    @PutMapping("/{id}")
     public int updatePoints(@PathVariable int id, @RequestParam int points) {
         return scoreService.updateScorePoints(id, points);
     }
 
-    @DeleteMapping("/{id}") // Delete [cite: 135]
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         scoreService.deleteScore(id);
     }

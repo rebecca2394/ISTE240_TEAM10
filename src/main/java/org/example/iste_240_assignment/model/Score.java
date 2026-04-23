@@ -26,7 +26,7 @@ public class Score {
 
     public Score() {}
 
-    // Getters and Setters...
+
     public int getScoreId() { return scoreId; }
     public void setScoreId(int scoreId) { this.scoreId = scoreId; }
 
@@ -39,5 +39,5 @@ public class Score {
     public int getPoints() { return points; }
     public void setPoints(int points) { this.points = points; }
 
-    // Include all other getters/setters here as per your previous class...
+
 }
