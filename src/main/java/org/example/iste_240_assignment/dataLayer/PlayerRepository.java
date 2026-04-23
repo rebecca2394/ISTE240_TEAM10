@@ -14,6 +14,12 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
     Optional<Player> findByUsername(String username);
     Optional<Player> findByEmail(String email);
 
+    @Query("SELECT p FROM Player p WHERE p.username = :username")
+    Optional<Player> findUserByUsername(@Param("username") String username);
+
+    @Query("SELECT p FROM Player p WHERE p.email = :email")
+    Optional<Player> findUserByEmail(@Param("email") String email);
+
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
 
