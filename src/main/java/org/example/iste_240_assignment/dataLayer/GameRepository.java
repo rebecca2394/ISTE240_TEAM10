@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
-public interface DGameRepository extends JpaRepository<Game, Integer> {
+public interface GameRepository extends JpaRepository<Game, Integer> {
 
     Optional<Game> findByName(String name);
     List<Game> findBySubject(String subject);
