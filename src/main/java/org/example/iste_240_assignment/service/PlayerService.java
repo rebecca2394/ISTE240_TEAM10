@@ -62,7 +62,9 @@ public class PlayerService {
         Player player = existingPlayer.get();
         player.setUsername(playerToUpdate.getUsername());
         player.setEmail(playerToUpdate.getEmail());
-        player.setPassword(playerToUpdate.getPassword());
+        if (playerToUpdate.getPassword() != null && !playerToUpdate.getPassword().isEmpty()) {
+            player.setPassword(playerToUpdate.getPassword());
+        }
         return playerRepository.save(player);
     }
 
