@@ -1,0 +1,74 @@
+### Player 1
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "secret123"
+}
+
+### Player 2
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "jane_smith",
+  "email": "jane@example.com",
+  "password": "mypassword"
+}
+
+### Player 3
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "alex_wong",
+  "email": "alex@example.com",
+  "password": "alexpass"
+}
+
+### Player 4
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "sarah_lee",
+  "email": "sarah@example.com",
+  "password": "sarah123"
+}
+
+### Player 5
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "mike_brown",
+  "email": "mike@example.com",
+  "password": "mike456"
+}
+
+### Get all players
+GET http://localhost:8080/api/players
+
+### Get player by username
+GET http://localhost:8080/api/players/username/john_doe
+
+### Get player by email
+GET http://localhost:8080/api/players/email/jane@example.com
+
+### Update player
+PUT http://localhost:8080/api/players/1
+Content-Type: application/json
+
+{
+  "username": "john_updated",
+  "email": "john_new@example.com",
+  "password": "newsecret"
+}
+
+### Delete player by username
+DELETE http://localhost:8080/api/players/username/alex_wong
+
+### Delete player by ID
+DELETE http://localhost:8080/api/players/4
