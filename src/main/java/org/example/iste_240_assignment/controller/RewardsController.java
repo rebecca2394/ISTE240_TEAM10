@@ -1,41 +1,86 @@
 package org.example.iste_240_assignment.controller;
 
 import org.example.iste_240_assignment.model.Rewards;
-import org.example.iste_240_assignment.service.GameService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.example.iste_240_assignment.service.RewardsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/rewards")
 public class RewardsController {
 
-    private final GameService gameService;
+    @Autowired
+    private RewardsService rewardsService;
 
-    public RewardsController(GameService gameService) {
-        this.gameService = gameService;
+    @GetMapping
+    public List<Rewards> getAllRewards() {
+        return rewardsService.getAllRewards();
     }
 
-    @GetMapping("/rewards")
-    public String viewRewards(Model model) {
-        model.addAttribute("rewards", gameService.getRewards());
-        return "Rewards";
+    @GetMapping("/{id}")
+    public Optional<Rewards> getRewardsById(@PathVariable Integer id) {
+        return rewardsService.getRewardsById(id);
     }
 
-    @GetMapping("/rewards/add")
-    public String addRewardsForm() {
-        return "add-Rewards";
+    @GetMapping("/player/{playerId}")
+    public Optional<Rewards> getByPlayerId(@PathVariable int playerId) {
+        return rewardsService.getRewardsByPlayerId(playerId);
     }
 
-    @PostMapping("/rewards/add")
-    public String addRewards(@RequestParam int playerId,
-                             @RequestParam int gameId,
-                             @RequestParam int badges,
-                             @RequestParam int bonus,
-                             @RequestParam int maxDifficulty) {
-
-        gameService.addRewards(new Rewards(playerId, gameId, badges, bonus, maxDifficulty));
-
-        return "redirect:/add/success/rewards";
+    @GetMapping("/game/{gameId}")
+    public List<Rewards> getByGameId(@PathVariable int gameId) {
+        return rewardsService.getRewardsByGameId(gameId);
     }
 
+    @GetMapping("/badges/{badges}")
+    public List<Rewards> getByBadges(@PathVariable int badges) {
+        return rewardsService.getRewardsByBadges(badges);
+    }
+
+    @GetMapping("/awarded")
+    public List<Rewards> getAwardedBadges() {
+        return rewardsService.getAwardedBadges();
+    }
+
+    @GetMapping("/count/{status}")
+    public long countAwarded(@PathVariable boolean status) {
+        return rewardsService.getCountByBadgeAwarded(status);
+    }
+
+    @GetMapping("/search")
+    public List<Rewards> searchByPlayer(@RequestParam int playerId) {
+        return rewardsService.getRewardsByPlayerId(playerId)
+                .map(List::of)
+                .orElse(List.of());
+    }
+
+    @PostMapping
+    public Rewards addRewards(@RequestBody Rewards rewards) {
+        return rewardsService.saveRewards(rewards);
+    }
+
+    @PutMapping("/{id}")
+    public Rewards updateRewards(@PathVariable Integer id, @RequestBody Rewards rewards) {
+        rewards.setId(id);
+        return rewardsService.updateRewards(rewards);
+    }
+
+    @PutMapping("/bonus/{id}")
+    public int updateBonus(@PathVariable Integer id,
+                           @RequestParam int bonus) {
+        return rewardsService.updateBonus(id, bonus);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Integer id) {
+        rewardsService.deleteRewardsById(id);
+    }
+
+    @DeleteMapping("/player/{playerId}")
+    public long deleteByPlayerId(@PathVariable int playerId) {
+        return rewardsService.deleteRewardsByPlayerId(playerId);
+    }
 }
