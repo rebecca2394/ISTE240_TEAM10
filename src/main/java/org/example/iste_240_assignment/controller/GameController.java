@@ -1,7 +1,7 @@
 package org.example.iste_240_assignment.controller;
 
 import org.example.iste_240_assignment.model.Game;
-import org.example.iste_240_assignment.service.GameService;
+import org.example.iste_240_assignment.service.GamesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class GameController {
 
     @Autowired
-    private GameService gameService;
+    private GamesService gameService;
 
     @GetMapping
     public List<Game> getAllGames() {

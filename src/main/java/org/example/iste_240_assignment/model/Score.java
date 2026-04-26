@@ -8,20 +8,26 @@ public class Score {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="scoreId", nullable = false)
     private int scoreId;
 
     @ManyToOne
     @JoinColumn(name = "playerId", nullable = false)
-    private player player;
+    private Player player;
 
     @ManyToOne
     @JoinColumn(name = "gameId", nullable = false)
     private Game game;
 
+    @Column(name="currentLevel")
     private int currentLevel;
+    @Column(name="roundsPlayed")
     private int roundsPlayed;
+    @Column(name="attempts")
     private int attempts;
+    @Column(name="points")
     private int points;
+    @Column(name="gameOver")
     private boolean gameOver;
 
     public Score() {}

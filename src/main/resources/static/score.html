@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>StellaVerse Score Management</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f3f5;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-light container py-4">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-light-emphasis">StellaVerse Score Management</h2>
+    <button id="addBtn" class="btn btn-primary px-4">+ Add Score</button>
+</div>
+
+<div class="card shadow-sm p-3 mb-4">
+    <div class="input-group">
+        <input type="text" id="search" class="form-control" placeholder="Search by Player ID...">
+        <button id="searchBtn" class="btn btn-info px-4" style="min-width: 300px;">Search</button>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div id="result"></div>
+    </div>
+</div>
+
+<div id="formBox" class="card p-3 mt-4 shadow text-dark" style="display:none;">
+    <input type="hidden" id="scoreId">
+
+    <label for="playerId">Player ID</label>
+    <input id="playerId" type="number" class="form-control mb-2" placeholder="Player ID">
+
+    <label for="gameId">Game ID</label>
+    <input id="gameId" type="number" class="form-control mb-2" placeholder="Game ID">
+
+    <label for="currentLevel">Current Level</label>
+    <input id="currentLevel" type="number" class="form-control mb-2" placeholder="Current Level">
+
+    <label for="roundsPlayed">Rounds Played</label>
+    <input id="roundsPlayed" type="number" class="form-control mb-2" placeholder="Rounds Played">
+
+    <label for="attempts">Attempts</label>
+    <input id="attempts" type="number" class="form-control mb-2" placeholder="Attempts">
+
+    <label for="points">Points</label>
+    <input id="points" type="number" class="form-control mb-2" placeholder="Points">
+
+    <label for="gameOver">Game Status</label>
+    <select id="gameOver" class="form-control mb-3">
+        <option value="false">In Progress</option>
+        <option value="true">Game Over</option>
+    </select>
+
+    <div class="d-flex gap-2">
+        <button id="saveBtn" class="btn btn-success w-50">Save</button>
+        <button id="cancelBtn" class="btn btn-secondary w-50">Cancel</button>
+    </div>
+</div>
+
+<script>
+    let API = "/api/scores";
+
+    function loadScores(){
+        $.get(API, function(data){
+            let table = "<table class='table table-hover align-middle'>";
+            table += "<thead class='table-secondary'>";
+            table += "<tr><th>Score ID</th><th>Points</th><th>Level</th><th>Status</th><th>Actions</th></tr>";
+            table += "</thead><tbody>";
+
+            for(let i=0; i<data.length; i++){
+                let s = data[i];
+                let status = s.gameOver
+                    ? "<span class='badge bg-danger d-inline-block text-center' style='width:130px;'>Finished</span>"
+                    : "<span class='badge bg-success d-inline-block text-center' style='width:130px;'>Active</span>";
+
+                table += `<tr>
+                <td>${s.scoreId}</td>
+                <td>${s.points}</td>
+                <td>${s.currentLevel}</td>
+                <td>${status}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm me-2" onclick="editScore(${s.scoreId})">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteScore(${s.scoreId})">Delete</button>
+                </td>
+            </tr>`;
+            }
+            table += "</tbody></table>";
+            $("#result").html(table);
+        }).fail(function(){
+            $("#result").html("<p class='text-danger'>Error loading score data</p>");
+        });
+    }
+
+    $("#addBtn").click(function(){
+        $("#formBox").show();
+        $("#scoreId").val("");
+        $("input").val("");
+    });
+
+    $("#cancelBtn").click(function(){
+        $("#formBox").hide();
+    });
+
+    $("#saveBtn").click(function(){
+        let id = $("#scoreId").val();
+        let score = {
+            player: { playerId: parseInt($("#playerId").val()) },
+            game: { gameId: parseInt($("#gameId").val()) },
+            currentLevel: parseInt($("#currentLevel").val()),
+            roundsPlayed: parseInt($("#roundsPlayed").val()),
+            attempts: parseInt($("#attempts").val()),
+            points: parseInt($("#points").val()),
+            gameOver: $("#gameOver").val() === "true"
+        };
+
+        if(id){
+            $.ajax({
+                url: API + "/" + id + "?points=" + score.points, // Matching your updatePoints PUT endpoint
+                type: "PUT",
+                success: loadScores
+            });
+        } else {
+            $.ajax({
+                url: API,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(score),
+                success: loadScores
+            });
+        }
+
+        $("#formBox").hide();
+    });
+
+    function deleteScore(id){
+        $.ajax({
+            url: API + "/" + id,
+            type: "DELETE",
+            success: loadScores
+        });
+    }
+
+    function editScore(id){
+        $.get(API + "/" + id, function(s){
+            $("#scoreId").val(s.scoreId);
+            $("#playerId").val(s.player.playerId);
+            $("#gameId").val(s.game.gameId);
+            $("#currentLevel").val(s.currentLevel);
+            $("#roundsPlayed").val(s.roundsPlayed);
+            $("#attempts").val(s.attempts);
+            $("#points").val(s.points);
+            $("#gameOver").val(s.gameOver.toString());
+
+            $("#formBox").show();
+        });
+    }
+
+    $("#searchBtn").click(function(){
+        let playerId = $("#search").val();
+        // Uses your ScoreRepository findByPlayer_PlayerId method
+        $.get(API + "/search?playerId=" + playerId, function(data){
+            // Note: Update your controller to handle this search query specifically if needed
+            loadScores();
+        });
+    });
+
+    $(document).ready(function(){
+        loadScores();
+    });
+</script>
+
+</body>
+</html>
