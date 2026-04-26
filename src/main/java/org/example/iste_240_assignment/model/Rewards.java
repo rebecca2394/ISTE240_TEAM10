@@ -9,13 +9,13 @@ public class Rewards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="rewardId", nullable=false)
+    @Column(name="reward_id", nullable=false)
     private int rewardId;
 
-    @Column(name="gameId")
+    @Column(name="game_id")
     private int gameId;
 
-    @Column(name="playerId")
+    @Column(name="player_id")
     private int playerId;
 
     @Column(name="badges")
@@ -24,10 +24,10 @@ public class Rewards {
     @Column(name="bonus")
     private int bonus;
 
-    @Column(name="maxDifficulty")
+    @Column(name="max_difficulty")
     private int maxDifficulty;
 
-    @Column(name="badgeAwarded")
+    @Column(name="badge_awarded")
     private boolean badgeAwarded;
 
     public Rewards() {
