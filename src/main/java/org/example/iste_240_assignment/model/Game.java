@@ -1,15 +1,30 @@
 package org.example.iste_240_assignment.model;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="games")
 public class Game {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+
+    @Column(name="gameId", nullable=false)
     private int gameId;
+    @Column(name="name", length=50, nullable=false)
     private String name;
+    @Column(name="subject")
     private String subject;
+    @Column(name="topic")
     private String topic;
+    @Column(name="difficulty")
     private int difficulty;
+    @Column(name="levels")
     private int levels;
+    @Column(name="rounds")
     private int rounds;
+    @Column(name="maxFails")
     private int maxFails;
+    @Column(name="available")
     private boolean available;
 
     public Game(){
