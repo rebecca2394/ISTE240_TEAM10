@@ -24,8 +24,8 @@ public class PlayerService {
 
         if (playerRepository.findByUsername(playerToSave.getUsername()).isPresent())
             throw new RuntimeException("Player already exists with username: " + playerToSave.getUsername());
-        if (playerRepository.findByEmail(playerToSave.getEmail()).isPresent())
-            throw new RuntimeException("Player already exists with email: " + playerToSave.getEmail());
+
+
 
         return playerRepository.save(playerToSave);
     }
@@ -62,7 +62,9 @@ public class PlayerService {
         Player player = existingPlayer.get();
         player.setUsername(playerToUpdate.getUsername());
         player.setEmail(playerToUpdate.getEmail());
-        player.setPassword(playerToUpdate.getPassword());
+        if (playerToUpdate.getPassword() != null && !playerToUpdate.getPassword().isEmpty()) {
+            player.setPassword(playerToUpdate.getPassword());
+        }
         return playerRepository.save(player);
     }
 
