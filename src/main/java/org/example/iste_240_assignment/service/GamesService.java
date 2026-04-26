@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class GameService {
+public class GamesService {
 
     @Autowired
     GameRepository gameRepository;
