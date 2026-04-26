@@ -1,6 +1,8 @@
 package org.example.iste_240_assignment.service;
 
 import jakarta.transaction.Transactional;
+import org.example.iste_240_assignment.dataLayer.GameRepository;
+import org.example.iste_240_assignment.model.Game;
 import org.example.iste_240_assignment.model.Rewards;
 import org.example.iste_240_assignment.dataLayer.RewardsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,20 @@ public class RewardsService {
 
     @Autowired
     RewardsRepository rewardsRepository;
+    @Autowired
+    private GameRepository gameRepository;
 
     public Rewards saveRewards(Rewards rewardsToSave){
 
         if(rewardsRepository.existsByPlayerId(rewardsToSave.getPlayerId()))
             throw new RuntimeException("Rewards already exist for player: " + rewardsToSave.getPlayerId());
+        Game game = gameRepository.findById(rewardsToSave.getGameId())
+                .orElseThrow( () -> new RuntimeException("Game not found"));
+
+        boolean correct = true;
+        int attempts = 0;
+        rewardsToSave.addBonus(correct, attempts);
+        rewardsToSave.addBadges(game, correct);
 
         return rewardsRepository.save(rewardsToSave);
     }
