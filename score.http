@@ -1,0 +1,70 @@
+### Score 1
+POST http://localhost:8080/api/scores
+Content-Type: application/json
+
+{
+
+  "player": { "playerId": 1 },
+  "game": { "gameId": 1 },
+  "currentLevel": 5,
+  "roundsPlayed": 10,
+  "attempts": 1,
+  "points": 5000,
+  "gameOver": false
+}
+
+### Score 2
+POST http://localhost:8080/api/scores
+Content-Type: application/json
+
+{
+  "player": { "playerId": 2 },
+  "game": { "gameId": 1 },
+  "currentLevel": 3,
+  "roundsPlayed": 6,
+  "attempts": 2,
+  "points": 2500,
+  "gameOver": false
+}
+
+### Score 3
+POST http://localhost:8080/api/scores
+Content-Type: application/json
+
+{
+  "player": { "playerId": 3 },
+  "game": { "gameId": 2 },
+  "currentLevel": 10,
+  "roundsPlayed": 20,
+  "attempts": 5,
+  "points": 8500,
+  "gameOver": true
+}
+
+### Score 4
+POST http://localhost:8080/api/scores
+Content-Type: application/json
+
+{
+  "player": { "playerId": 1 },
+  "game": { "gameId": 3 },
+  "currentLevel": 1,
+  "roundsPlayed": 2,
+  "attempts": 3,
+  "points": 100,
+  "gameOver": true
+}
+
+### Score 5
+POST http://localhost:8080/api/scores
+Content-Type: application/json
+
+{
+  "player": { "playerId": 4 },
+  "game": { "gameId": 2 },
+  "currentLevel": 2,
+  "roundsPlayed": 4,
+  "attempts": 1,
+  "points": 1200,
+  "gameOver": false
+}

@@ -1,6 +1,8 @@
 package org.example.iste_240_assignment.model;
 
 import jakarta.persistence.*;
+import org.example.iste_240_assignment.model.Player;
+import org.example.iste_240_assignment.model.Game;
 
 @Entity
 @Table(name="scores")
@@ -32,6 +34,17 @@ public class Score {
 
     public Score() {}
 
+    public int getCurrentLevel() { return currentLevel; }
+    public void setCurrentLevel(int currentLevel) { this.currentLevel = currentLevel; }
+
+    public int getRoundsPlayed() { return roundsPlayed; }
+    public void setRoundsPlayed(int roundsPlayed) { this.roundsPlayed = roundsPlayed; }
+
+    public int getAttempts() { return attempts; }
+    public void setAttempts(int attempts) { this.attempts = attempts; }
+
+    public boolean isGameOver() { return gameOver; }
+    public void setGameOver(boolean gameOver) { this.gameOver = gameOver; }
 
     public int getScoreId() { return scoreId; }
     public void setScoreId(int scoreId) { this.scoreId = scoreId; }
