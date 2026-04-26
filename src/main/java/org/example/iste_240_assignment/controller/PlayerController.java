@@ -1,39 +1,70 @@
 package org.example.iste_240_assignment.controller;
 
 import org.example.iste_240_assignment.model.Player;
-import org.example.iste_240_assignment.service.GameService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.example.iste_240_assignment.service.PlayerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/players")
 public class PlayerController {
 
-    private final GameService gameService;
+    @Autowired
+    private PlayerService playerService;
 
-    public PlayerController(GameService gameService) {
-        this.gameService = gameService;
+    @GetMapping
+    public List<Player> getAllPlayers() {
+        return playerService.getAllPlayers();
     }
 
-    @GetMapping("/player")
-    public String viewPlayers(Model model) {
-        model.addAttribute("players", gameService.getPlayers());
-        return "player";
+    @GetMapping("/{id}")
+    public Optional<Player> getPlayerById(@PathVariable Integer id) {
+        return playerService.getPlayerById(id);
     }
 
-    @GetMapping("/player/add")
-    public String addPlayerFoam() {
-        return "add-player";
+    @GetMapping("/username/{username}")
+    public Optional<Player> getPlayerByUsername(@PathVariable String username) {
+        return playerService.getPlayerByUsername(username);
     }
 
-    @PostMapping("/player/add")
-    public String addPlayer(@RequestParam int playerId,
-                            @RequestParam String username,
-                            @RequestParam String email,
-                            @RequestParam String password,
-                            Model model) {
-        gameService.addPlayer(new Player(playerId, username, email, password));
-        model.addAttribute("entityName", "player");
-        return "success";
+    @GetMapping("/email/{email}")
+    public Optional<Player> getPlayerByEmail(@PathVariable String email) {
+        return playerService.getPlayerByEmail(email);
+    }
+
+    @GetMapping("/search")
+    public List<Player> searchPlayers(@RequestParam(required = false) String username,
+                                      @RequestParam(required = false) String email) {
+        if (username != null && !username.isEmpty()) {
+            return playerService.searchByUsername(username);
+        } else if (email != null && !email.isEmpty()) {
+            return playerService.searchByEmail(email);
+        } else {
+            return playerService.getAllPlayers();
+        }
+    }
+
+    @PostMapping
+    public Player addPlayer(@RequestBody Player player) {
+        return playerService.savePlayer(player);
+    }
+
+    @PutMapping("/{id}")
+    public Player updatePlayer(@PathVariable Integer id, @RequestBody Player player) {
+        player.setId(id);
+        return playerService.updatePlayer(player);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Integer id) {
+        playerService.deletePlayerById(id);
+    }
+
+    @DeleteMapping("/username/{username}")
+    public long deleteByUsername(@PathVariable String username) {
+        return playerService.deletePlayerByUsername(username);
     }
 }
