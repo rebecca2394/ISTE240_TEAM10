@@ -1,0 +1,74 @@
+###Game1
+POST http://localhost:8080/api/games
+Content-Type: application/json
+
+{
+  "name": "Memory Card",
+  "subject": "Science",
+  "topic": "Solar System",
+  "difficulty": 1,
+  "levels": 5,
+  "rounds": 3,
+  "maxFails": 3,
+  "available": true
+}
+
+###Game2
+POST http://localhost:8080/api/games
+Content-Type: application/json
+
+{
+"name": "Math Quiz",
+"subject": "Mathematics",
+"topic": "Algebra",
+"difficulty": 2,
+"levels": 4,
+"rounds": 3,
+"maxFails": 2,
+"available": true
+}
+
+### Game3
+POST http://localhost:8080/api/games
+Content-Type: application/json
+
+{
+  "name": "Word Builder",
+  "subject": "English",
+  "topic": "Vocabulary",
+  "difficulty": 1,
+  "levels": 6,
+  "rounds": 2,
+  "maxFails": 3,
+  "available": true
+}
+
+### Game4
+POST http://localhost:8080/api/games
+Content-Type: application/json
+
+{
+  "name": "History Challenge",
+  "subject": "History",
+  "topic": "World War II",
+  "difficulty": 3,
+  "levels": 3,
+  "rounds": 4,
+  "maxFails": 2,
+  "available": false
+}
+
+### Game 5
+POST http://localhost:8080/api/games
+Content-Type: application/json
+
+{
+  "name": "Geography Map",
+  "subject": "Geography",
+  "topic": "Countries and Capitals",
+  "difficulty": 2,
+  "levels": 5,
+  "rounds": 3,
+  "maxFails": 2,
+  "available": true
+}
