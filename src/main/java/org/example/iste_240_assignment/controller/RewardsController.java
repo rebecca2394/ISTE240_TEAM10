@@ -1,10 +1,6 @@
 package org.example.iste_240_assignment.controller;
 
-import org.example.iste_240_assignment.model.Rewards;
-import org.example.iste_240_assignment.service.GameService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class RewardsController {
