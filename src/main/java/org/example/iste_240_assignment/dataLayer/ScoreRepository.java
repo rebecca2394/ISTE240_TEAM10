@@ -22,3 +22,4 @@ public interface ScoreRepository extends JpaRepository<Score, Integer> {
 
     void deleteByScoreId(int id);
 }
+

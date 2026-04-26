@@ -8,3 +8,6 @@ Minha Fathima - 400005568
 Rebecca Mathew - 396007418
 Aaron felick D'souza - 41500298
 Mohammed al salaam - 418002685
+
+## Merge Manager:
+Mohammed Al Salam - 418002685

@@ -23,6 +23,11 @@ public class ScoreController {
         return scoreService.getScoreById(id).orElse(null);
     }
 
+    @GetMapping("/player/{playerId}")
+    public List<Score> getScoresByPlayer(@PathVariable int playerId) {
+        return scoreService.getScoresByPlayer(playerId);
+    }
+
     @PostMapping
     public Score create(@RequestBody Score score) {
         return scoreService.saveScore(score);

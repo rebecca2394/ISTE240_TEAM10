@@ -115,10 +115,6 @@ public class Game {
         this.available = available;
     }
 
-    public int getTotalRounds() {
-        return levels * rounds;
-    }
-
     @Override
     public String toString() {
         return "Game: " + name +

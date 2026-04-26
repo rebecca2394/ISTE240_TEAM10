@@ -14,7 +14,7 @@ public class Player {
     @Column(name = "username", length = 50, nullable = false)
     private String username;
 
-    @Column(name = "email", length = 100, nullable = false, unique = true)
+    @Column(name = "email", length = 100, nullable = false)
     private String email;
 
     @Column(name = "password", length = 255, nullable = false)

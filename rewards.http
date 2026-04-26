@@ -1,0 +1,75 @@
+### Rewards 1
+POST http://localhost:8080/api/rewards
+Content-Type: application/json
+
+{
+  "playerId": 1,
+  "gameId": 1,
+  "correct": true,
+  "attempts": 1,
+  "badges": 2,
+  "bonus": 10,
+  "maxDifficulty": 3,
+  "badgeAwarded": true
+}
+
+### Rewards 2
+POST http://localhost:8080/api/rewards
+Content-Type: application/json
+
+{
+  "playerId": 2,
+  "gameId": 1,
+  "badges": 1,
+  "correct": false,
+  "attempts": 1,
+  "bonus": 5,
+  "maxDifficulty": 2,
+  "badgeAwarded": false
+}
+
+### Rewards 3
+POST http://localhost:8080/api/rewards
+Content-Type: application/json
+
+{
+  "playerId": 3,
+  "gameId": 2,
+  "correct": true,
+  "attempts": 3,
+  "badges": 3,
+  "bonus": 15,
+
+  "maxDifficulty": 4,
+  "badgeAwarded": true
+}
+
+### Rewards 4
+POST http://localhost:8080/api/rewards
+Content-Type: application/json
+
+{
+  "playerId": 4,
+  "gameId": 3,
+  "correct": false,
+  "attempts": 3,
+  "badges": 0,
+  "bonus": 0,
+  "maxDifficulty": 1,
+  "badgeAwarded": false
+}
+
+### Rewards 5
+POST http://localhost:8080/api/rewards
+Content-Type: application/json
+
+{
+  "playerId": 5,
+  "gameId": 2,
+  "correct": true,
+  "attempts": 1,
+  "badges": 2,
+  "bonus": 20,
+  "maxDifficulty": 5,
+  "badgeAwarded": true
+}

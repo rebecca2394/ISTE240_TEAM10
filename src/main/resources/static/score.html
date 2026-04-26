@@ -173,7 +173,7 @@
     $("#searchBtn").click(function(){
         let playerId = $("#search").val();
         // Uses your ScoreRepository findByPlayer_PlayerId method
-        $.get(API + "/search?playerId=" + playerId, function(data){
+        $.get(API + "/player/" + playerId, function(data){
             // Note: Update your controller to handle this search query specifically if needed
             loadScores();
         });

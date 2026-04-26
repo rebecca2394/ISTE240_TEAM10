@@ -2,41 +2,188 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>StellaVerse - Learning Lights The Way</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StellaVerse Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #020617, #1e293b);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 70px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header span {
+            color: #3b82f6;
+        }
+
+        .header p {
+            color: #94a3b8;
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            position: relative;
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s ease;
+            cursor: pointer;
+            text-align: center;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.04);
+            box-shadow: 0 0 25px rgba(255,255,255,0.2);
+        }
+
+        .icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+        }
+
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        .game { color: #3b82f6; }
+        .player { color: #10b981; }
+        .score { color: #f59e0b; }
+        .reward { color: #ef4444; }
+
+        .btn-game { background: #3b82f6; }
+        .btn-player { background: #10b981; }
+        .btn-score { background: #f59e0b; }
+        .btn-reward { background: #ef4444; }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 70px;
+            color: #64748b;
+        }
+
+    </style>
 </head>
+
 <body>
-<header>
-    <div class="navbar">
-        <h2>StellaVerse</h2>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/game">Games</a>
-            <a href="/player">Players</a>
-            <a href="/score">Scores</a>
-            <a href="/rewards">Rewards</a>
-        </nav>
+
+<div class="container">
+
+    <div class="header">
+        <h1><span>StellaVerse Admin DashBoard</span></h1>
+        <p>Game • Player • Score • Rewards</p>
+        <p></p>
+        <p>The StellaVerse Admin Dashboard provides a unified interface for managing the entire system. From configuring games to overseeing player activity and rewards, this panel is designed for efficient control, monitoring, and administration.</p>
     </div>
-</header>
 
-<section class="intro">
-    <h1>Welcome to StellaVerse!</h1>
-    <p>A Gamified Learning Experience For Your Creative Little Ones</p>
-    <a href="/game" class="button">Start Playing</a>
-</section>
+    <div class="grid">
+        <!--ADD NAVIGATION LINKS HERE-->
+        <div class="card" onclick="go('game.html')">
+            <div class="icon game">🕹️</div>
+            <h2>Games</h2>
+            <p>Manage game logic, difficulty & settings</p>
+            <button class="btn btn-game">Open</button>
+        </div>
 
-<section class="games">
-    <h2>Games of the Week</h2>
-    <p>Here are our top 3 exciting games of the week!</p>
+        <div class="card" onclick="go('player.html')">
+            <div class="icon player">👤</div>
+            <h2>Players</h2>
+            <p>Manage users and player accounts</p>
+            <button class="btn btn-player">Open</button>
+        </div>
+    </div>
 
-    <div class="game">Memory Match</div>
-    <div class="game">Tic Tac Toe</div>
-    <div class="game">Number Sort</div>
-    <div class="game">Rock Paper Scissors</div>
-</section>
+    <div class="footer">
+        © StellaVerse • Educational Platform
+    </div>
 
-<footer>
-    &copy 2026 StellaVerse - All Rights Reserved
-</footer>
+</div>
+
+<script>
+    function go(page){
+        window.location.href = page;
+    }
+</script>
 
 </body>
 </html>
